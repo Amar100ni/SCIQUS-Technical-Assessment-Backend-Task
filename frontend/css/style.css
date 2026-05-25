@@ -1,0 +1,417 @@
+/* =============================================
+   Sciqus — Simple Clean Stylesheet
+   Font: Inter (Google Fonts)
+   Accent: #6C3FC5 (purple)
+   ============================================= */
+
+/* -----------------------------------------------
+   RESET & BASE
+   ----------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    background-color: #f5f5f7;
+    color: #1a1a2e;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* -----------------------------------------------
+   UTILITY
+   ----------------------------------------------- */
+.hidden {
+    display: none !important;
+}
+
+/* -----------------------------------------------
+   MESSAGES (success / error)
+   ----------------------------------------------- */
+.msg {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.msg-error {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.msg-success {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* -----------------------------------------------
+   BUTTONS
+   ----------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 7px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Purple primary button */
+.btn-primary {
+    background-color: #6C3FC5;
+    color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: #5a33a8;
+}
+
+/* Outlined button */
+.btn-outline {
+    background-color: transparent;
+    color: #6C3FC5;
+    border: 1.5px solid #6C3FC5;
+}
+
+.btn-outline:hover:not(:disabled) {
+    background-color: #f3eeff;
+}
+
+/* Small danger button for delete in table rows */
+.btn-danger {
+    background-color: transparent;
+    color: #dc2626;
+    border: 1.5px solid #dc2626;
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #fef2f2;
+}
+
+/* Full width button */
+.btn-full {
+    width: 100%;
+}
+
+/* -----------------------------------------------
+   LOGIN PAGE
+   ----------------------------------------------- */
+#login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background-color: #f5f5f7;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Brand / logo area */
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+    background-color: #6C3FC5;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #6C3FC5;
+    letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    padding-left: 56px; /* aligns with brand name */
+}
+
+.login-hint {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+}
+
+/* -----------------------------------------------
+   FORMS (shared between login & modals)
+   ----------------------------------------------- */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 7px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6C3FC5;
+    box-shadow: 0 0 0 3px rgba(108, 63, 197, 0.12);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* -----------------------------------------------
+   HEADER
+   ----------------------------------------------- */
+#app-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 28px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6C3FC5;
+    letter-spacing: -0.5px;
+}
+
+/* -----------------------------------------------
+   MAIN CONTENT — TWO COLUMNS
+   ----------------------------------------------- */
+#app-main {
+    display: flex;
+    gap: 24px;
+    padding: 28px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Each section takes equal width on desktop */
+.section-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    min-width: 0; /* prevents flex children from overflowing */
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #6C3FC5;
+}
+
+/* -----------------------------------------------
+   TABLES
+   ----------------------------------------------- */
+
+/* Wrapper allows horizontal scroll on small screens */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+thead th {
+    text-align: left;
+    padding: 10px 12px;
+    background-color: #f9fafb;
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody td {
+    padding: 11px 12px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.table-loading {
+    text-align: center;
+    color: #9ca3af;
+    padding: 24px !important;
+}
+
+.table-empty {
+    text-align: center;
+    color: #9ca3af;
+    padding: 24px !important;
+    font-style: italic;
+}
+
+/* -----------------------------------------------
+   MODALS
+   ----------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+    padding: 28px;
+    width: 100%;
+    max-width: 440px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #9ca3af;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: color 0.15s ease;
+}
+
+.modal-close:hover {
+    color: #374151;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions .btn {
+    flex: 1;
+}
+
+/* -----------------------------------------------
+   RESPONSIVE — Stack columns on mobile
+   ----------------------------------------------- */
+@media (max-width: 768px) {
+    #app-main {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    #app-header {
+        padding: 0 16px;
+    }
+
+    .login-card {
+        padding: 28px 20px;
+    }
+
+    .login-subtitle {
+        padding-left: 0;
+    }
+}

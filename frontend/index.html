@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sciqus | Student Management</title>
+    <meta name="description" content="Sciqus Student & Course Management System" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C3FC5'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>S</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- =============================================
+         LOGIN PAGE
+         ============================================= -->
+    <div id="login-page">
+        <div class="login-card">
+            <div class="login-brand">
+                <div class="brand-icon">S</div>
+                <h1 class="brand-name">Sciqus</h1>
+            </div>
+            <p class="login-subtitle">Student Management Portal</p>
+
+            <div id="login-error" class="msg msg-error hidden"></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="admin@sciqus.com"
+                        required
+                        autocomplete="email"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Enter password"
+                        required
+                        autocomplete="current-password"
+                    />
+                </div>
+                <button type="submit" id="login-btn" class="btn btn-primary btn-full">
+                    Login
+                </button>
+            </form>
+
+            <p class="login-hint">Default: admin@sciqus.com / admin123</p>
+        </div>
+    </div>
+
+
+    <!-- =============================================
+         DASHBOARD PAGE
+         ============================================= -->
+    <div id="dashboard-page" class="hidden">
+
+        <!-- Header -->
+        <header id="app-header">
+            <span class="header-logo">Sciqus</span>
+            <button id="logout-btn" class="btn btn-outline">Logout</button>
+        </header>
+
+        <!-- Main content -->
+        <main id="app-main">
+
+            <!-- ---- STUDENTS SECTION ---- -->
+            <section class="section-card" id="students-section">
+                <div class="section-header">
+                    <h2>Students</h2>
+                    <!-- Hidden for student role -->
+                    <button id="add-student-btn" class="btn btn-primary admin-only hidden">
+                        + Add Student
+                    </button>
+                </div>
+
+                <div id="students-error" class="msg msg-error hidden"></div>
+
+                <div class="table-wrapper">
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th class="admin-only hidden">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="students-tbody">
+                            <tr>
+                                <td colspan="4" class="table-loading">Loading…</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ---- COURSES SECTION ---- -->
+            <section class="section-card" id="courses-section">
+                <div class="section-header">
+                    <h2>Courses</h2>
+                    <!-- Hidden for student role -->
+                    <button id="add-course-btn" class="btn btn-primary admin-only hidden">
+                        + Add Course
+                    </button>
+                </div>
+
+                <div id="courses-error" class="msg msg-error hidden"></div>
+
+                <div class="table-wrapper">
+                    <table id="courses-table">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Code</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courses-tbody">
+                            <tr>
+                                <td colspan="3" class="table-loading">Loading…</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+
+    <!-- =============================================
+         MODAL — ADD STUDENT
+         ============================================= -->
+    <div id="student-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="student-modal-title">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="student-modal-title">Add Student</h3>
+                <button id="student-modal-close" class="modal-close" aria-label="Close">&times;</button>
+            </div>
+
+            <div id="student-msg" class="msg hidden"></div>
+
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="s-name">Full Name</label>
+                    <input type="text" id="s-name" placeholder="e.g. Rahul Sharma" required />
+                </div>
+                <div class="form-group">
+                    <label for="s-email">Email</label>
+                    <input type="email" id="s-email" placeholder="rahul@example.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="s-password">Password</label>
+                    <input type="password" id="s-password" placeholder="Min 6 characters" required minlength="6" />
+                </div>
+                <div class="form-group">
+                    <label for="s-course">Course</label>
+                    <select id="s-course" required>
+                        <option value="">— Select a course —</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="student-cancel-btn" class="btn btn-outline">Cancel</button>
+                    <button type="submit" id="student-submit-btn" class="btn btn-primary">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- =============================================
+         MODAL — ADD COURSE
+         ============================================= -->
+    <div id="course-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="course-modal-title">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="course-modal-title">Add Course</h3>
+                <button id="course-modal-close" class="modal-close" aria-label="Close">&times;</button>
+            </div>
+
+            <div id="course-msg" class="msg hidden"></div>
+
+            <form id="course-form">
+                <div class="form-group">
+                    <label for="c-name">Course Name</label>
+                    <input type="text" id="c-name" placeholder="e.g. Full Stack Web Development" required />
+                </div>
+                <div class="form-group">
+                    <label for="c-code">Course Code</label>
+                    <input type="text" id="c-code" placeholder="e.g. FSWD202 (must be unique)" required maxlength="50" />
+                </div>
+                <div class="form-group">
+                    <label for="c-duration">Duration (months)</label>
+                    <input type="number" id="c-duration" placeholder="e.g. 6" required min="1" max="120" />
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="course-cancel-btn" class="btn btn-outline">Cancel</button>
+                    <button type="submit" id="course-submit-btn" class="btn btn-primary">Add Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>
