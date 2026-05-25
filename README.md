@@ -6,21 +6,6 @@ A full-stack REST API application for managing students and courses, built with 
 
 ---
 
-## 📋 Table of Contents
-
-1. [Project Overview](#project-overview)
-2. [Tech Stack](#tech-stack)
-3. [Prerequisites](#prerequisites)
-4. [Project Structure](#project-structure)
-5. [Setup Instructions](#setup-instructions)
-6. [API Endpoints](#api-endpoints)
-7. [Testing with Postman](#testing-with-postman)
-8. [Database Schema](#database-schema)
-9. [Stored Procedures](#stored-procedures)
-10. [Running the Frontend](#running-the-frontend)
-
----
-
 ## 📌 Project Overview
 
 Sciqus is a Student and Course Management System that provides:
